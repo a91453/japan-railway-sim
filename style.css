@@ -20,7 +20,6 @@
   --color-info: rgba(98, 108, 113, 1);
   --color-focus-ring: rgba(33, 128, 141, 0.4);
   --color-select-caret: rgba(19, 52, 59, 0.8);
-
   /* Common style patterns */
   --focus-ring: 0 0 0 3px var(--color-focus-ring);
   --focus-outline: 2px solid var(--color-primary);
@@ -28,16 +27,16 @@
   --status-border-opacity: 0.25;
   --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-
   /* RGB versions for opacity control */
   --color-success-rgb: 33, 128, 141;
   --color-error-rgb: 192, 21, 47;
   --color-warning-rgb: 168, 75, 47;
   --color-info-rgb: 98, 108, 113;
-
   /* Typography */
-  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
   --font-size-xs: 11px;
   --font-size-sm: 12px;
   --font-size-base: 14px;
@@ -54,7 +53,6 @@
   --line-height-tight: 1.2;
   --line-height-normal: 1.5;
   --letter-spacing-tight: -0.01em;
-
   /* Spacing */
   --space-0: 0;
   --space-1: 1px;
@@ -68,26 +66,26 @@
   --space-20: 20px;
   --space-24: 24px;
   --space-32: 32px;
-
   /* Border Radius */
   --radius-sm: 6px;
   --radius-base: 8px;
   --radius-md: 10px;
   --radius-lg: 12px;
   --radius-full: 9999px;
-
   /* Shadows */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
-  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
-
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
   /* Animation */
   --duration-fast: 150ms;
   --duration-normal: 250ms;
   --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
-
   /* Layout */
   --container-sm: 640px;
   --container-md: 768px;
@@ -117,11 +115,11 @@
     --color-btn-primary-text: rgba(19, 52, 59, 1);
     --color-card-border: rgba(119, 124, 124, 0.2);
     --color-card-border-inner: rgba(119, 124, 124, 0.15);
-    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
     --button-border-secondary: rgba(119, 124, 124, 0.2);
     --color-border-secondary: rgba(119, 124, 124, 0.2);
     --color-select-caret: rgba(245, 245, 245, 0.8);
-
     /* Common style patterns - updated for dark mode */
     --focus-ring: 0 0 0 3px var(--color-focus-ring);
     --focus-outline: 2px solid var(--color-primary);
@@ -129,7 +127,6 @@
     --status-border-opacity: 0.25;
     --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
     --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-
     /* RGB versions for dark mode */
     --color-success-rgb: 50, 184, 198;
     --color-error-rgb: 255, 84, 89;
@@ -159,10 +156,10 @@
   --color-btn-primary-text: rgba(19, 52, 59, 1);
   --color-card-border: rgba(119, 124, 124, 0.15);
   --color-card-border-inner: rgba(119, 124, 124, 0.15);
-  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   --color-border-secondary: rgba(119, 124, 124, 0.2);
   --color-select-caret: rgba(245, 245, 245, 0.8);
-
   /* Common style patterns - updated for dark mode */
   --focus-ring: 0 0 0 3px var(--color-focus-ring);
   --focus-outline: 2px solid var(--color-primary);
@@ -170,14 +167,12 @@
   --status-border-opacity: 0.25;
   --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-
   /* RGB versions for dark mode */
   --color-success-rgb: 50, 184, 198;
   --color-error-rgb: 255, 84, 89;
   --color-warning-rgb: 230, 129, 97;
   --color-info-rgb: 167, 169, 169;
 }
-
 [data-color-scheme="light"] {
   --color-background: rgba(252, 252, 249, 1);
   --color-surface: rgba(255, 255, 253, 1);
@@ -198,7 +193,6 @@
   --color-warning: rgba(168, 75, 47, 1);
   --color-info: rgba(98, 108, 113, 1);
   --color-focus-ring: rgba(33, 128, 141, 0.4);
-
   /* RGB versions for light mode */
   --color-success-rgb: 33, 128, 141;
   --color-error-rgb: 192, 21, 47;
@@ -216,18 +210,15 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
   padding: 0;
 }
-
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
-
 /* Typography */
 h1,
 h2,
@@ -241,7 +232,6 @@ h6 {
   color: var(--color-text);
   letter-spacing: var(--letter-spacing-tight);
 }
-
 h1 {
   font-size: var(--font-size-4xl);
 }
@@ -260,21 +250,17 @@ h5 {
 h6 {
   font-size: var(--font-size-md);
 }
-
 p {
   margin: 0 0 var(--space-16) 0;
 }
-
 a {
   color: var(--color-primary);
   text-decoration: none;
   transition: color var(--duration-fast) var(--ease-standard);
 }
-
 a:hover {
   color: var(--color-primary-hover);
 }
-
 code,
 pre {
   font-family: var(--font-family-mono);
@@ -282,23 +268,19 @@ pre {
   background-color: var(--color-secondary);
   border-radius: var(--radius-sm);
 }
-
 code {
   padding: var(--space-1) var(--space-4);
 }
-
 pre {
   padding: var(--space-16);
   margin: var(--space-16) 0;
   overflow: auto;
   border: 1px solid var(--color-border);
 }
-
 pre code {
   background: none;
   padding: 0;
 }
-
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -315,69 +297,55 @@ pre code {
   text-decoration: none;
   position: relative;
 }
-
 .btn:focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
 }
-
 .btn--primary {
   background: var(--color-primary);
   color: var(--color-btn-primary-text);
 }
-
 .btn--primary:hover {
   background: var(--color-primary-hover);
 }
-
 .btn--primary:active {
   background: var(--color-primary-active);
 }
-
 .btn--secondary {
   background: var(--color-secondary);
   color: var(--color-text);
 }
-
 .btn--secondary:hover {
   background: var(--color-secondary-hover);
 }
-
 .btn--secondary:active {
   background: var(--color-secondary-active);
 }
-
 .btn--outline {
   background: transparent;
   border: 1px solid var(--color-border);
   color: var(--color-text);
 }
-
 .btn--outline:hover {
   background: var(--color-secondary);
 }
-
 .btn--sm {
   padding: var(--space-4) var(--space-12);
   font-size: var(--font-size-sm);
   border-radius: var(--radius-sm);
 }
-
 .btn--lg {
   padding: var(--space-10) var(--space-20);
   font-size: var(--font-size-lg);
   border-radius: var(--radius-md);
 }
-
 .btn--full-width {
   width: 100%;
 }
-
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 /* Form elements */
 .form-control {
   display: block;
@@ -389,14 +357,13 @@ pre code {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-base);
-  transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
 }
-
 textarea.form-control {
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
 }
-
 select.form-control {
   padding: var(--space-8) var(--space-12);
   -webkit-appearance: none;
@@ -408,39 +375,32 @@ select.form-control {
   background-size: 16px;
   padding-right: var(--space-32);
 }
-
 /* Add a dark mode specific caret */
 @media (prefers-color-scheme: dark) {
   select.form-control {
     background-image: var(--select-caret-dark);
   }
 }
-
 /* Also handle data-color-scheme */
 [data-color-scheme="dark"] select.form-control {
   background-image: var(--select-caret-dark);
 }
-
 [data-color-scheme="light"] select.form-control {
   background-image: var(--select-caret-light);
 }
-
 .form-control:focus {
   border-color: var(--color-primary);
   outline: var(--focus-outline);
 }
-
 .form-label {
   display: block;
   margin-bottom: var(--space-8);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-sm);
 }
-
 .form-group {
   margin-bottom: var(--space-16);
 }
-
 /* Card component */
 .card {
   background-color: var(--color-surface);
@@ -450,21 +410,17 @@ select.form-control {
   overflow: hidden;
   transition: box-shadow var(--duration-normal) var(--ease-standard);
 }
-
 .card:hover {
   box-shadow: var(--shadow-md);
 }
-
 .card__body {
   padding: var(--space-16);
 }
-
 .card__header,
 .card__footer {
   padding: var(--space-16);
   border-bottom: 1px solid var(--color-card-border-inner);
 }
-
 /* Status indicators - simplified with CSS variables */
 .status {
   display: inline-flex;
@@ -474,31 +430,26 @@ select.form-control {
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-sm);
 }
-
 .status--success {
   background-color: rgba(var(--color-success-rgb, 33, 128, 141), var(--status-bg-opacity));
   color: var(--color-success);
   border: 1px solid rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity));
 }
-
 .status--error {
   background-color: rgba(var(--color-error-rgb, 192, 21, 47), var(--status-bg-opacity));
   color: var(--color-error);
   border: 1px solid rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity));
 }
-
 .status--warning {
   background-color: rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-bg-opacity));
   color: var(--color-warning);
   border: 1px solid rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity));
 }
-
 .status--info {
   background-color: rgba(var(--color-info-rgb, 98, 108, 113), var(--status-bg-opacity));
   color: var(--color-info);
   border: 1px solid rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
 }
-
 /* Container layout */
 .container {
   width: 100%;
@@ -507,7 +458,6 @@ select.form-control {
   padding-right: var(--space-16);
   padding-left: var(--space-16);
 }
-
 @media (min-width: 640px) {
   .container {
     max-width: var(--container-sm);
@@ -528,7 +478,6 @@ select.form-control {
     max-width: var(--container-xl);
   }
 }
-
 /* Utility classes */
 .flex {
   display: flex;
@@ -554,7 +503,6 @@ select.form-control {
 .gap-16 {
   gap: var(--space-16);
 }
-
 .m-0 {
   margin: 0;
 }
@@ -572,7 +520,6 @@ select.form-control {
   margin-top: var(--space-8);
   margin-bottom: var(--space-8);
 }
-
 .p-0 {
   padding: 0;
 }
@@ -592,14 +539,12 @@ select.form-control {
   padding-left: var(--space-16);
   padding-right: var(--space-16);
 }
-
 .block {
   display: block;
 }
 .hidden {
   display: none;
 }
-
 /* Accessibility */
 .sr-only {
   position: absolute;
@@ -612,32 +557,27 @@ select.form-control {
   white-space: nowrap;
   border-width: 0;
 }
-
 :focus-visible {
   outline: var(--focus-outline);
   outline-offset: 2px;
 }
-
 /* Dark mode specifics */
 [data-color-scheme="dark"] .btn--outline {
   border: 1px solid var(--color-border-secondary);
 }
-
 @font-face {
-  font-family: 'FKGroteskNeue';
-  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+  font-family: "FKGroteskNeue";
+  src: url("https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2")
+      format("woff2");
 }
-
 /* 基本樣式 */
 .screen {
   display: none;
   min-height: 100vh;
 }
-
 .screen.active {
   display: block;
 }
-
 /* 主選單樣式 */
 .game-header {
   text-align: center;
@@ -648,19 +588,16 @@ select.form-control {
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-24);
 }
-
 .game-header h1 {
   font-size: var(--font-size-4xl);
   margin-bottom: var(--space-8);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
-
 .game-subtitle {
   font-size: var(--font-size-lg);
   opacity: 0.9;
   margin: 0;
 }
-
 .menu-card {
   background: var(--color-surface);
   border-radius: var(--radius-lg);
@@ -668,46 +605,38 @@ select.form-control {
   box-shadow: var(--shadow-lg);
   overflow: hidden;
 }
-
 .menu-section {
   padding: var(--space-24);
   border-bottom: 1px solid var(--color-card-border-inner);
 }
-
 .menu-section:last-child {
   border-bottom: none;
 }
-
 .menu-section h3 {
   margin-bottom: var(--space-16);
   color: var(--color-primary);
   font-size: var(--font-size-xl);
 }
-
 .menu-buttons {
   display: flex;
   gap: var(--space-16);
   flex-wrap: wrap;
 }
-
 /* 難度選擇 */
 .difficulty-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-12);
 }
-
 .difficulty-option {
   position: relative;
 }
-
 .difficulty-option input[type="radio"] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
-
 .difficulty-option label {
   display: block;
   padding: var(--space-16);
@@ -717,18 +646,15 @@ select.form-control {
   transition: all var(--duration-normal) var(--ease-standard);
   background: var(--color-surface);
 }
-
 .difficulty-option label:hover {
   border-color: var(--color-primary);
   background: var(--color-secondary);
 }
-
 .difficulty-option input[type="radio"]:checked + label {
   border-color: var(--color-primary);
   background: rgba(var(--color-success-rgb), 0.1);
   box-shadow: 0 0 0 2px rgba(var(--color-success-rgb), 0.2);
 }
-
 .difficulty-name {
   display: block;
   font-weight: var(--font-weight-semibold);
@@ -736,23 +662,19 @@ select.form-control {
   color: var(--color-text);
   margin-bottom: var(--space-4);
 }
-
 .difficulty-desc {
   display: block;
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   line-height: var(--line-height-normal);
 }
-
 /* 年份選擇 */
 .year-selection {
   text-align: center;
 }
-
 .year-slider {
   margin-bottom: var(--space-20);
 }
-
 .year-slider input[type="range"] {
   width: 100%;
   max-width: 400px;
@@ -763,7 +685,6 @@ select.form-control {
   appearance: none;
   -webkit-appearance: none;
 }
-
 .year-slider input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   -webkit-appearance: none;
@@ -774,7 +695,6 @@ select.form-control {
   cursor: pointer;
   box-shadow: var(--shadow-md);
 }
-
 .year-slider input[type="range"]::-moz-range-thumb {
   width: 24px;
   height: 24px;
@@ -784,25 +704,21 @@ select.form-control {
   border: none;
   box-shadow: var(--shadow-md);
 }
-
 .year-display {
   margin-top: var(--space-12);
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
 }
-
 .preset-years {
   display: flex;
   gap: var(--space-8);
   justify-content: center;
   flex-wrap: wrap;
 }
-
 .preset-year {
   white-space: nowrap;
 }
-
 /* 遊戲界面樣式 */
 .game-container {
   display: flex;
@@ -811,7 +727,6 @@ select.form-control {
   padding: var(--space-16);
   gap: var(--space-16);
 }
-
 .status-bar {
   display: flex;
   gap: var(--space-16);
@@ -822,7 +737,6 @@ select.form-control {
   border: 1px solid var(--color-card-border);
   box-shadow: var(--shadow-sm);
 }
-
 .status-item {
   display: flex;
   flex-direction: column;
@@ -830,32 +744,28 @@ select.form-control {
   flex: 1;
   min-width: 120px;
 }
-
 .status-label {
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-4);
 }
-
 .status-value {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text);
 }
-
 .main-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-16);
   flex: 1;
 }
-
-.left-panel, .right-panel {
+.left-panel,
+.right-panel {
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
 }
-
 /* 網絡地圖 */
 .network-map {
   display: grid;
@@ -864,7 +774,6 @@ select.form-control {
   max-height: 300px;
   overflow-y: auto;
 }
-
 .city-node {
   display: flex;
   flex-direction: column;
@@ -876,47 +785,39 @@ select.form-control {
   transition: all var(--duration-fast) var(--ease-standard);
   cursor: pointer;
 }
-
 .city-node:hover {
   background: var(--color-secondary-hover);
   transform: translateY(-2px);
 }
-
 .city-node.connected {
   background: rgba(var(--color-success-rgb), 0.2);
   border-color: var(--color-success);
 }
-
 .city-emoji {
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-4);
 }
-
 .city-name {
   font-size: var(--font-size-xs);
   text-align: center;
   font-weight: var(--font-weight-medium);
 }
-
 /* 狀態指標 */
 .status-grid {
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
 }
-
 .status-metric {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 }
-
 .metric-label {
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-medium);
 }
-
 .progress-bar {
   width: 100%;
   height: 8px;
@@ -924,35 +825,30 @@ select.form-control {
   border-radius: var(--radius-full);
   overflow: hidden;
 }
-
 .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--color-success), var(--color-primary));
   border-radius: var(--radius-full);
   transition: width var(--duration-normal) var(--ease-standard);
 }
-
 .metric-value {
   font-size: var(--font-size-sm);
   color: var(--color-text);
   font-weight: var(--font-weight-semibold);
   text-align: right;
 }
-
 /* 操作按鈕 */
 .action-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-12);
 }
-
 .action-btn {
   padding: var(--space-16);
   font-size: var(--font-size-base);
   text-align: center;
   white-space: nowrap;
 }
-
 /* 底部控制 */
 .bottom-controls {
   display: flex;
@@ -966,19 +862,16 @@ select.form-control {
   gap: var(--space-16);
   flex-wrap: wrap;
 }
-
 .time-controls {
   flex: 1;
   display: flex;
   justify-content: center;
 }
-
 .game-controls {
   display: flex;
   gap: var(--space-8);
   flex-wrap: wrap;
 }
-
 /* 彈窗樣式 */
 .modal {
   display: none;
@@ -991,13 +884,11 @@ select.form-control {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
 }
-
 .modal.active {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .modal-content {
   background: var(--color-surface);
   border-radius: var(--radius-lg);
@@ -1008,7 +899,6 @@ select.form-control {
   overflow-y: auto;
   animation: modalSlideIn 0.3s var(--ease-standard);
 }
-
 @keyframes modalSlideIn {
   from {
     opacity: 0;
@@ -1019,7 +909,6 @@ select.form-control {
     transform: translateY(0) scale(1);
   }
 }
-
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -1027,11 +916,9 @@ select.form-control {
   padding: var(--space-20);
   border-bottom: 1px solid var(--color-card-border-inner);
 }
-
 .modal-body {
   padding: var(--space-20);
 }
-
 .close-btn {
   background: none;
   border: none;
@@ -1040,11 +927,9 @@ select.form-control {
   color: var(--color-text-secondary);
   transition: color var(--duration-fast) var(--ease-standard);
 }
-
 .close-btn:hover {
   color: var(--color-text);
 }
-
 /* 事件選項 */
 .event-options {
   display: flex;
@@ -1052,7 +937,6 @@ select.form-control {
   gap: var(--space-12);
   margin-top: var(--space-16);
 }
-
 .event-option {
   padding: var(--space-16);
   border: 1px solid var(--color-border);
@@ -1061,28 +945,23 @@ select.form-control {
   cursor: pointer;
   transition: all var(--duration-fast) var(--ease-standard);
 }
-
 .event-option:hover {
   background: var(--color-secondary-hover);
   border-color: var(--color-primary);
 }
-
 .option-text {
   font-weight: var(--font-weight-medium);
   margin-bottom: var(--space-4);
 }
-
 .option-effect {
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
 }
-
 .option-cost {
   font-size: var(--font-size-sm);
   color: var(--color-error);
   font-weight: var(--font-weight-medium);
 }
-
 /* 存檔槽位 */
 .save-slots {
   display: flex;
@@ -1090,7 +969,6 @@ select.form-control {
   gap: var(--space-12);
   max-width: 500px;
 }
-
 .save-slot {
   display: flex;
   justify-content: space-between;
@@ -1102,85 +980,70 @@ select.form-control {
   cursor: pointer;
   transition: all var(--duration-fast) var(--ease-standard);
 }
-
 .save-slot:hover {
   background: var(--color-secondary-hover);
   border-color: var(--color-primary);
 }
-
 .save-slot.occupied {
   background: rgba(var(--color-success-rgb), 0.1);
   border-color: var(--color-success);
 }
-
 .save-info {
   flex: 1;
 }
-
 .save-date {
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
 }
-
 .save-details {
   font-size: var(--font-size-sm);
   color: var(--color-text);
   margin-top: var(--space-2);
 }
-
 .save-actions {
   display: flex;
   gap: var(--space-8);
 }
-
 /* 動作內容區域 */
 .route-builder {
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
 }
-
 .city-selector {
   display: flex;
   gap: var(--space-12);
   align-items: center;
 }
-
 .city-selector select {
   flex: 1;
 }
-
 .route-info {
   background: var(--color-secondary);
   padding: var(--space-12);
   border-radius: var(--radius-base);
   border: 1px solid var(--color-border);
 }
-
 .train-shop {
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
 }
-
 .train-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-12);
 }
-
 .train-card {
   padding: var(--space-12);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-base);
   background: var(--color-secondary);
 }
-
 .train-name {
   font-weight: var(--font-weight-semibold);
   margin-bottom: var(--space-8);
 }
-
 .train-specs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
@@ -1188,98 +1051,79 @@ select.form-control {
   margin-bottom: var(--space-12);
   font-size: var(--font-size-sm);
 }
-
 .spec-item {
   text-align: center;
 }
-
 .spec-label {
   display: block;
   color: var(--color-text-secondary);
   margin-bottom: var(--space-2);
 }
-
 .spec-value {
   font-weight: var(--font-weight-medium);
   color: var(--color-text);
 }
-
 /* 財務報表 */
 .finance-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: var(--space-16);
 }
-
 .finance-table th,
 .finance-table td {
   padding: var(--space-8);
   text-align: right;
   border-bottom: 1px solid var(--color-border);
 }
-
 .finance-table th {
   background: var(--color-secondary);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text);
 }
-
 .finance-table td {
   color: var(--color-text-secondary);
 }
-
 .positive {
   color: var(--color-success) !important;
 }
-
 .negative {
   color: var(--color-error) !important;
 }
-
 /* 響應式設計 */
 @media (max-width: 768px) {
   .main-content {
     grid-template-columns: 1fr;
   }
-  
   .status-bar {
     flex-direction: column;
     gap: var(--space-8);
   }
-  
   .status-item {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
-  
   .action-buttons {
     grid-template-columns: 1fr;
   }
-  
   .difficulty-grid {
     grid-template-columns: 1fr;
   }
-  
   .menu-buttons {
     flex-direction: column;
   }
-  
   .bottom-controls {
     flex-direction: column;
     text-align: center;
   }
-  
   .time-controls {
     order: 1;
   }
-  
   .game-controls {
     order: 2;
     justify-content: center;
   }
 }
-
 /* 載入動畫 */
 .loading {
   display: inline-block;
@@ -1290,11 +1134,11 @@ select.form-control {
   border-top-color: var(--color-primary);
   animation: spin 1s ease-in-out infinite;
 }
-
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
 /* 通知樣式 */
 .notification {
   position: fixed;
@@ -1306,19 +1150,15 @@ select.form-control {
   z-index: 1001;
   animation: slideInRight 0.3s var(--ease-standard);
 }
-
 .notification.success {
   background: var(--color-success);
 }
-
 .notification.error {
   background: var(--color-error);
 }
-
 .notification.warning {
   background: var(--color-warning);
 }
-
 @keyframes slideInRight {
   from {
     transform: translateX(100%);
