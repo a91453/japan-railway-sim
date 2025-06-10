@@ -40,7 +40,7 @@ const gameData = {
     {"id": "shinkansen_n700", "name": "N700系新幹線", "type": "新幹線", "era": 2007, "speed": 320, "capacity": 1300, "cost": 700000000, "maintenance": 8000000, "environmental": 9, "unlocked": false},
     {"id": "shinkansen_e5", "name": "E5系新幹線", "type": "新幹線", "era": 2010, "speed": 320, "capacity": 731, "cost": 500000000, "maintenance": 7000000, "environmental": 9, "unlocked": false},
     {"id": "maglev_l0", "name": "L0系磁浮列車", "type": "磁浮", "era": 2027, "speed": 505, "capacity": 1000, "cost": 1000000000, "maintenance": 12000000, "environmental": 10, "unlocked": false}
-  ],
+],
   technologies: [
     {"id": "steam_tech", "name": "蒸汽機關技術", "cost": 0, "duration": 0, "unlocked": true, "year": 1950, "benefits": "解鎖蒸汽列車"},
     {"id": "electric_tech", "name": "電氣化技術", "cost": 100000000, "duration": 12, "unlocked": false, "year": 1964, "benefits": "解鎖電氣化列車，降低維護成本15%"},
