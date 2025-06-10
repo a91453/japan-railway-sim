@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本鐵道模擬經營遊戲</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 開始選單 -->
+    <div id="start-menu" class="screen">
+        <div class="start-menu-container">
+            <h1>日本鐵道模擬經營遊戲</h1>
+            <div class="card start-menu-card">
+                <div class="card__body">
+                    <div class="form-group">
+                        <label class="form-label">選擇難度</label>
+                        <select id="difficulty-select" class="form-control">
+                            <option value="0">初心者 (起始資金: ¥1,500,000)</option>
+                            <option value="1" selected>標準 (起始資金: ¥1,000,000)</option>
+                            <option value="2">上級者 (起始資金: ¥750,000)</option>
+                            <option value="3">專家 (起始資金: ¥500,000)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">選擇起始年份</label>
+                        <select id="year-select" class="form-control">
+                            <option value="1950">1950年 - 蒸汽機車時代</option>
+                            <option value="1964">1964年 - 新幹線元年</option>
+                            <option value="1987" selected>1987年 - JR民營化</option>
+                            <option value="2010">2010年 - 現代化時代</option>
+                            <option value="2025">2025年 - 未來技術</option>
+                        </select>
+                    </div>
+                    <button id="start-game-btn" class="btn btn--primary btn--full-width">開始遊戲</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主遊戲畫面 -->
+    <div id="game-screen" class="screen hidden">
+        <!-- 頂部狀態欄 -->
+        <div class="top-bar">
+            <div class="status-info">
+                <div class="status-item">
+                    <span class="label">年月:</span>
+                    <span id="current-date">1987年1月</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">資金:</span>
+                    <span id="current-money">¥1,000,000</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">總里程:</span>
+                    <span id="total-distance">0km</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">列車數:</span>
+                    <span id="train-count">0</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">滿意度:</span>
+                    <span id="satisfaction">100%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主要內容區域 -->
+        <div class="main-content">
+            <!-- 左側操作面板 -->
+            <div class="left-panel">
+                <div class="panel-section">
+                    <h3>建設管理</h3>
+                    <button id="build-route-btn" class="btn btn--primary btn--full-width">建設路線</button>
+                    <button id="buy-train-btn" class="btn btn--secondary btn--full-width">購買列車</button>
+                </div>
+                
+                <div class="panel-section">
+                    <h3>營運狀況</h3>
+                    <div class="construction-progress" id="construction-list">
+                        <!-- 建設中的路線會顯示在這裡 -->
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>每月操作</h3>
+                    <button id="next-month-btn" class="btn btn--primary btn--full-width">下個月</button>
+                </div>
+            </div>
+
+            <!-- 中央地圖 -->
+            <div class="map-container">
+                <svg id="japan-map" viewBox="0 0 500 400">
+                    <!-- 背景 -->
+                    <rect width="500" height="400" fill="var(--color-background)"/>
+                    
+                    <!-- 路線會動態添加 -->
+                    <g id="routes-layer"></g>
+                    
+                    <!-- 城市點 -->
+                    <g id="cities-layer">
+                        <!-- 城市會通過JavaScript動態添加 -->
+                    </g>
+                </svg>
+            </div>
+
+            <!-- 右側資訊面板 -->
+            <div class="right-panel">
+                <div class="panel-section" id="info-panel">
+                    <h3>資訊</h3>
+                    <p>點擊城市或路線查看詳細資訊</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部事件通知欄 -->
+        <div class="bottom-bar">
+            <div id="events-log">
+                <div class="event-item">歡迎來到日本鐵道模擬經營遊戲！</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 建設路線對話框 -->
+    <div id="build-route-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>建設新路線</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">選擇路線</label>
+                    <select id="route-select" class="form-control">
+                        <!-- 路線選項會動態添加 -->
+                    </select>
+                </div>
+                <div id="route-details" class="route-info hidden">
+                    <div class="info-row">
+                        <span class="label">距離:</span>
+                        <span id="route-distance">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">建設成本:</span>
+                        <span id="route-cost">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">建設工期:</span>
+                        <span id="route-duration">-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-build-btn" class="btn btn--primary">開始建設</button>
+                <button class="btn btn--secondary modal-close">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 購買列車對話框 -->
+    <div id="buy-train-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>購買列車</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="train-list">
+                    <!-- 列車選項會動態添加 -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary modal-close">關閉</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 月度報告對話框 -->
+    <div id="monthly-report-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>月度營運報告</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="report-section">
+                    <h4>收入</h4>
+                    <div class="info-row">
+                        <span class="label">客運收入:</span>
+                        <span id="passenger-revenue">¥0</span>
+                    </div>
+                </div>
+                <div class="report-section">
+                    <h4>支出</h4>
+                    <div class="info-row">
+                        <span class="label">維護費用:</span>
+                        <span id="maintenance-cost">¥0</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">建設費用:</span>
+                        <span id="construction-cost">¥0</span>
+                    </div>
+                </div>
+                <div class="report-section">
+                    <h4>淨收益</h4>
+                    <div class="info-row">
+                        <span class="label">本月淨收益:</span>
+                        <span id="net-profit">¥0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--primary modal-close">繼續</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

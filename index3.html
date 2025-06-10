@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚅 日本鐵道模擬經營 🚅</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 主選單界面 -->
+        <div id="mainMenu" class="screen active">
+            <div class="container">
+                <div class="game-header">
+                    <h1>🚅 日本鐵道模擬經營 🚅</h1>
+                    <p class="game-subtitle">成為日本鐵路建設總監，引領JR集團邁向未來</p>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-section">
+                        <h3>遊戲開始</h3>
+                        <div class="menu-buttons">
+                            <button class="btn btn--primary btn--lg" id="newGameBtn">
+                                🚀 開始新遊戲
+                            </button>
+                            <button class="btn btn--secondary btn--lg" id="loadGameBtn">
+                                📂 讀取遊戲
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-section">
+                        <h3>難度選擇</h3>
+                        <div class="difficulty-grid">
+                            <div class="difficulty-option" data-difficulty="初心者">
+                                <input type="radio" id="beginner" name="difficulty" value="初心者" checked>
+                                <label for="beginner">
+                                    <span class="difficulty-name">初心者</span>
+                                    <span class="difficulty-desc">起始資金150兆日圓，營收加成20%</span>
+                                </label>
+                            </div>
+                            <div class="difficulty-option" data-difficulty="標準">
+                                <input type="radio" id="normal" name="difficulty" value="標準">
+                                <label for="normal">
+                                    <span class="difficulty-name">標準</span>
+                                    <span class="difficulty-desc">起始資金100兆日圓，正常營收</span>
+                                </label>
+                            </div>
+                            <div class="difficulty-option" data-difficulty="上級者">
+                                <input type="radio" id="advanced" name="difficulty" value="上級者">
+                                <label for="advanced">
+                                    <span class="difficulty-name">上級者</span>
+                                    <span class="difficulty-desc">起始資金75兆日圓，維護成本較高</span>
+                                </label>
+                            </div>
+                            <div class="difficulty-option" data-difficulty="專家">
+                                <input type="radio" id="expert" name="difficulty" value="專家">
+                                <label for="expert">
+                                    <span class="difficulty-name">專家</span>
+                                    <span class="difficulty-desc">起始資金50兆日圓，高挑戰性</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section">
+                        <h3>起始年份選擇</h3>
+                        <div class="year-selection">
+                            <div class="year-slider">
+                                <input type="range" id="yearSlider" min="1950" max="2030" value="1987" step="1">
+                                <div class="year-display">
+                                    <span id="selectedYear">1987</span> 年
+                                </div>
+                            </div>
+                            <div class="preset-years">
+                                <button class="btn btn--sm preset-year" data-year="1950">蒸汽時代 (1950)</button>
+                                <button class="btn btn--sm preset-year" data-year="1987">民營化時代 (1987)</button>
+                                <button class="btn btn--sm preset-year" data-year="2010">高速時代 (2010)</button>
+                                <button class="btn btn--sm preset-year" data-year="2025">未來時代 (2025)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主遊戲界面 -->
+        <div id="gameScreen" class="screen">
+            <div class="game-container">
+                <!-- 頂部狀態欄 -->
+                <div class="status-bar">
+                    <div class="status-item">
+                        <span class="status-label">📅 日期</span>
+                        <span class="status-value" id="currentDate">1987年1月</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">💰 資金</span>
+                        <span class="status-value" id="currentFunds">100兆日圓</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">🛤️ 總里程</span>
+                        <span class="status-value" id="totalMileage">0公里</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">🚄 列車數</span>
+                        <span class="status-value" id="trainCount">0輛</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">👥 員工數</span>
+                        <span class="status-value" id="employeeCount">1000人</span>
+                    </div>
+                </div>
+
+                <!-- 主要操作區域 -->
+                <div class="main-content">
+                    <div class="left-panel">
+                        <!-- 城市連接地圖 -->
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>🗾 鐵路網絡圖</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="network-map" id="networkMap">
+                                    <!-- 城市將在這裡動態生成 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 當前狀態 -->
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>📊 營運狀況</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="status-grid">
+                                    <div class="status-metric">
+                                        <span class="metric-label">客戶滿意度</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" id="satisfactionBar" style="width: 80%"></div>
+                                        </div>
+                                        <span class="metric-value" id="satisfactionValue">80%</span>
+                                    </div>
+                                    <div class="status-metric">
+                                        <span class="metric-label">安全評級</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" id="safetyBar" style="width: 90%"></div>
+                                        </div>
+                                        <span class="metric-value" id="safetyValue">90%</span>
+                                    </div>
+                                    <div class="status-metric">
+                                        <span class="metric-label">環保指數</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" id="ecoBar" style="width: 70%"></div>
+                                        </div>
+                                        <span class="metric-value" id="ecoValue">70%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-panel">
+                        <!-- 主要操作按鈕 -->
+                        <div class="card">
+                            <div class="card__header">
+                                <h3>🎮 主要操作</h3>
+                            </div>
+                            <div class="card__body">
+                                <div class="action-buttons">
+                                    <button class="btn btn--primary action-btn" id="buildRouteBtn">
+                                        🔨 建設新路線
+                                    </button>
+                                    <button class="btn btn--primary action-btn" id="buyTrainBtn">
+                                        🚄 購買/升級列車
+                                    </button>
+                                    <button class="btn btn--primary action-btn" id="strategyBtn">
+                                        ⚙️ 調整營運策略
+                                    </button>
+                                    <button class="btn btn--primary action-btn" id="financeBtn">
+                                        📈 查看財務報表
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 操作詳情區域 -->
+                        <div class="card" id="actionCard">
+                            <div class="card__header">
+                                <h3 id="actionTitle">選擇操作</h3>
+                            </div>
+                            <div class="card__body" id="actionContent">
+                                <p>請選擇上方的操作按鈕開始遊戲。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 底部控制區 -->
+                <div class="bottom-controls">
+                    <div class="time-controls">
+                        <button class="btn btn--lg btn--primary" id="nextMonthBtn">
+                            進入下個月 ➡️
+                        </button>
+                    </div>
+                    <div class="game-controls">
+                        <button class="btn btn--secondary" id="saveGameBtn">💾 保存遊戲</button>
+                        <button class="btn btn--secondary" id="settingsBtn">⚙️ 設定</button>
+                        <button class="btn btn--outline" id="backToMenuBtn">← 返回主選單</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 事件彈窗 -->
+        <div id="eventModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="eventTitle">事件通知</h3>
+                </div>
+                <div class="modal-body">
+                    <p id="eventDescription">事件描述</p>
+                    <div id="eventOptions" class="event-options">
+                        <!-- 事件選項將在這裡動態生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 存檔選擇彈窗 -->
+        <div id="saveModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>存檔管理</h3>
+                    <button class="close-btn" id="closeSaveModal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div id="saveSlots" class="save-slots">
+                        <!-- 存檔槽位將在這裡動態生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

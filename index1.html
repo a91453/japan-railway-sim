@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本鐵道模擬經營遊戲 v4.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 遊戲開始畫面 -->
+    <div id="start-screen" class="screen">
+        <div class="container">
+            <div class="card start-card">
+                <h1>日本鐵道模擬經營遊戲 v4.0</h1>
+                <p>建設屬於你的鐵道帝國，見證日本鐵路發展歷史</p>
+                
+                <div class="form-group">
+                    <label class="form-label">選擇難度</label>
+                    <select id="difficulty-select" class="form-control">
+                        <option value="easy">簡單 - 起始資金 5億円</option>
+                        <option value="normal" selected>普通 - 起始資金 3億円</option>
+                        <option value="hard">困難 - 起始資金 2億円</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">選擇起始時代</label>
+                    <select id="era-select" class="form-control">
+                        <option value="steam">蒸汽時代 (1950年) - 從蒸汽機車開始</option>
+                        <option value="shinkansen" selected>新幹線時代 (1964年) - 高速發展期</option>
+                        <option value="modern">現代 (2010年) - 技術成熟期</option>
+                    </select>
+                </div>
+
+                <div class="flex gap-16">
+                    <button id="new-game-btn" class="btn btn--primary btn--lg">開始新遊戲</button>
+                    <button id="load-game-btn" class="btn btn--secondary btn--lg">載入遊戲</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主遊戲畫面 -->
+    <div id="game-screen" class="screen hidden">
+        <!-- 頂部資訊欄 -->
+        <div class="top-bar">
+            <div class="flex items-center justify-between">
+                <div class="game-info">
+                    <span class="info-item">年份: <span id="current-year">1950</span></span>
+                    <span class="info-item">月份: <span id="current-month">1</span></span>
+                    <span class="info-item">資金: ¥<span id="current-funds">300,000,000</span></span>
+                    <span class="info-item">每月收入: ¥<span id="monthly-income">0</span></span>
+                </div>
+                <div class="game-controls">
+                    <button id="next-month-btn" class="btn btn--primary">進入下個月</button>
+                    <button id="save-game-btn" class="btn btn--secondary">存檔</button>
+                    <button id="menu-btn" class="btn btn--outline">選單</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主要遊戲區域 -->
+        <div class="game-main">
+            <!-- 左側面板 -->
+            <div class="left-panel">
+                <div class="panel-tabs">
+                    <button class="tab-btn active" data-tab="cities">城市</button>
+                    <button class="tab-btn" data-tab="trains">列車</button>
+                    <button class="tab-btn" data-tab="routes">路線</button>
+                    <button class="tab-btn" data-tab="research">研發</button>
+                </div>
+
+                <!-- 城市面板 -->
+                <div id="cities-panel" class="tab-content active">
+                    <div class="panel-header">
+                        <h3>城市資訊</h3>
+                    </div>
+                    <div id="cities-list" class="cities-grid"></div>
+                </div>
+
+                <!-- 列車面板 -->
+                <div id="trains-panel" class="tab-content">
+                    <div class="panel-header">
+                        <h3>列車商店</h3>
+                        <button id="train-shop-btn" class="btn btn--primary btn--sm">購買列車</button>
+                    </div>
+                    <div id="trains-list" class="trains-grid"></div>
+                    <div class="panel-section">
+                        <h4>已擁有列車</h4>
+                        <div id="owned-trains-list" class="owned-trains"></div>
+                    </div>
+                </div>
+
+                <!-- 路線面板 -->
+                <div id="routes-panel" class="tab-content">
+                    <div class="panel-header">
+                        <h3>路線管理</h3>
+                        <button id="build-route-btn" class="btn btn--primary btn--sm">建設路線</button>
+                    </div>
+                    <div id="routes-list" class="routes-list"></div>
+                </div>
+
+                <!-- 研發面板 -->
+                <div id="research-panel" class="tab-content">
+                    <div class="panel-header">
+                        <h3>技術研發</h3>
+                    </div>
+                    <div id="tech-tree" class="tech-tree"></div>
+                </div>
+            </div>
+
+            <!-- 地圖區域 -->
+            <div class="map-container">
+                <svg id="game-map" viewBox="0 0 500 600" class="game-map">
+                    <!-- 日本地圖輪廓 -->
+                    <defs>
+                        <pattern id="water" patternUnits="userSpaceOnUse" width="10" height="10">
+                            <rect width="10" height="10" fill="#e3f2fd"/>
+                            <path d="M0,5 L5,0 L10,5 L5,10 Z" fill="#bbdefb"/>
+                        </pattern>
+                    </defs>
+                    <rect width="500" height="600" fill="url(#water)"/>
+                    <!-- 日本島嶼 -->
+                    <path d="M50,200 Q150,150 250,180 Q350,200 450,250 Q400,350 350,400 Q300,450 250,500 Q200,480 150,450 Q100,400 80,350 Q60,300 50,200 Z" fill="#f5f5dc" stroke="#8d6e63" stroke-width="2"/>
+                    <ellipse cx="380" cy="120" rx="60" ry="40" fill="#f5f5dc" stroke="#8d6e63" stroke-width="2"/>
+                    <ellipse cx="100" cy="500" rx="40" ry="30" fill="#f5f5dc" stroke="#8d6e63" stroke-width="2"/>
+                    
+                    <!-- 城市和路線將動態生成 -->
+                    <g id="routes-layer"></g>
+                    <g id="cities-layer"></g>
+                </svg>
+                
+                <!-- 地圖控制 -->
+                <div class="map-controls">
+                    <button id="zoom-in-btn" class="map-btn">+</button>
+                    <button id="zoom-out-btn" class="map-btn">-</button>
+                    <button id="reset-view-btn" class="map-btn">⌂</button>
+                </div>
+            </div>
+
+            <!-- 右側面板 -->
+            <div class="right-panel">
+                <div class="panel-tabs">
+                    <button class="tab-btn active" data-tab="info">資訊</button>
+                    <button class="tab-btn" data-tab="finance">財務</button>
+                    <button class="tab-btn" data-tab="events">事件</button>
+                </div>
+
+                <!-- 資訊面板 -->
+                <div id="info-panel" class="tab-content active">
+                    <div class="panel-header">
+                        <h3>詳細資訊</h3>
+                    </div>
+                    <div id="detail-info" class="detail-info">
+                        <p>點擊城市、路線或列車查看詳細資訊</p>
+                    </div>
+                </div>
+
+                <!-- 財務面板 -->
+                <div id="finance-panel" class="tab-content">
+                    <div class="panel-header">
+                        <h3>財務報表</h3>
+                    </div>
+                    <div class="finance-summary">
+                        <div class="finance-item">
+                            <span class="label">總資產:</span>
+                            <span class="value" id="total-assets">¥0</span>
+                        </div>
+                        <div class="finance-item">
+                            <span class="label">月收入:</span>
+                            <span class="value positive" id="monthly-revenue">¥0</span>
+                        </div>
+                        <div class="finance-item">
+                            <span class="label">月支出:</span>
+                            <span class="value negative" id="monthly-expenses">¥0</span>
+                        </div>
+                        <div class="finance-item">
+                            <span class="label">淨利潤:</span>
+                            <span class="value" id="net-profit">¥0</span>
+                        </div>
+                    </div>
+                    <canvas id="finance-chart" width="300" height="200"></canvas>
+                    <button id="loan-btn" class="btn btn--secondary btn--full-width">申請貸款</button>
+                </div>
+
+                <!-- 事件面板 -->
+                <div id="events-panel" class="tab-content">
+                    <div class="panel-header">
+                        <h3>歷史事件</h3>
+                    </div>
+                    <div id="events-list" class="events-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 對話框 -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">標題</h3>
+                <button id="modal-close" class="modal-close">×</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                內容
+            </div>
+            <div class="modal-footer" id="modal-footer">
+                <button id="modal-cancel" class="btn btn--secondary">取消</button>
+                <button id="modal-confirm" class="btn btn--primary">確認</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 通知系統 -->
+    <div id="notifications" class="notifications"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
