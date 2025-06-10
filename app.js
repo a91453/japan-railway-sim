@@ -165,6 +165,35 @@ function setupEventListeners() {
   elements.newGameBtn.addEventListener('click', startNewGame);
   elements.loadGameBtn.addEventListener('click', showLoadGame);
   
+  // FIXME: 1. 實作存檔/讀檔功能
+function saveGame() {
+  // FIXME: 實際存檔邏輯
+  localStorage.setItem('jrsim_save', JSON.stringify(gameState));
+  showNotification('遊戲已保存', 'success');
+}
+
+function loadGame() {
+  // FIXME: 實際讀檔邏輯
+  const saveData = localStorage.getItem('jrsim_save');
+  if (!saveData) {
+    showNotification('沒有可讀取的存檔', 'error');
+    return;
+  }
+  gameState = JSON.parse(saveData);
+  switchToGameScreen();
+  updateGameDisplay();
+  showNotification('遊戲已載入', 'success');
+}
+
+function showSaveGame() {
+  // FIXME: 可設計多檔存檔選擇UI，目前先直接存
+  saveGame();
+}
+function showLoadGame() {
+  // FIXME: 可設計多檔讀檔選擇UI，目前先直接載入
+  loadGame();
+}
+
   // Year selection
   elements.yearSlider.addEventListener('input', updateYearDisplay);
   elements.presetYears.forEach(btn => {
@@ -181,6 +210,8 @@ function setupEventListeners() {
   elements.backToMenuBtn.addEventListener('click', backToMenu);
   
   // Action buttons
+  document.getElementById('settingsBtn').addEventListener('click', function() {showNotification('設定功能尚未實作', 'info');
+});
   document.getElementById('buildRouteBtn').addEventListener('click', () => showAction('buildRoute'));
   document.getElementById('buyTrainBtn').addEventListener('click', () => showAction('buyTrain'));
   document.getElementById('strategyBtn').addEventListener('click', () => showAction('strategy'));
@@ -440,23 +471,27 @@ function createRouteBuilder() {
     const routeInfo = document.getElementById('routeInfo');
     const buildBtn = document.getElementById('buildRouteConfirm');
     function updateRouteInfo() {
-      const start = startSelect.value;
-      const end = endSelect.value;
-      if(start && end && start !== end) {
-        const startCity = gameData.cities.find(c => c.name === start);
-        const endCity = gameData.cities.find(c => c.name === end);
-        const distance = Math.floor(Math.random() * 300) + 100; // 100-400 km
-        const cost = distance * 2000000; // 2,000,000 JPY per km
-        const time = Math.ceil(distance / 50); // 1 month per 50 km
-        document.getElementById('buildCost').textContent = formatCurrency(cost);
-        document.getElementById('buildTime').textContent = time;
-        document.getElementById('routeDistance').textContent = distance;
-        routeInfo.style.display = 'block';
-        buildBtn.disabled = gameState.funds < cost;
-        buildBtn.onclick = () => buildRoute(start, end, cost, time, distance);
-      } else {
-        routeInfo.style.display = 'none';
-        buildBtn.disabled = true;
+    const start = startSelect.value;
+    const end = endSelect.value;
+    if(start && end && start !== end) {
+      const startCity = gameData.cities.find(c => c.name === start);
+      const endCity = gameData.cities.find(c => c.name === end);
+      const distance = Math.floor(Math.random() * 300) + 100; // 100-400 km
+      let cost = distance * 2000000; // 2,000,000 JPY per km
+      // FIXME: 顯示折扣後價格
+      if(gameState.nextBuildDiscount > 0) {
+        cost = cost * (1 - gameState.nextBuildDiscount);
+      }
+      const time = Math.ceil(distance / 50); // 1 month per 50 km
+      document.getElementById('buildCost').textContent = formatCurrency(cost);
+      document.getElementById('buildTime').textContent = time;
+      document.getElementById('routeDistance').textContent = distance;
+      routeInfo.style.display = 'block';
+      buildBtn.disabled = gameState.funds < cost;
+      buildBtn.onclick = () => buildRoute(start, end, cost, time, distance);
+    } else {
+      routeInfo.style.display = 'none';
+      buildBtn.disabled = true;
       }
     }
     startSelect.addEventListener('change', updateRouteInfo);
@@ -671,6 +706,27 @@ function createTechPanel() {
   html += '</div>';
   return html;
 }
+
+// FIXME: 3. 技術研發進度每月自動推進
+function updateResearchProgress() {
+  Object.keys(gameState.researchProgress).forEach(techId => {
+    const tech = gameState.technologies.find(t => t.id === techId);
+    if (tech && !tech.unlocked) {
+      let progress = gameState.researchProgress[techId];
+      progress += 100 / tech.duration;
+      if (progress >= 100) {
+        progress = 100;
+        tech.unlocked = true;
+        unlockTechnologyEffects(tech);
+        showNotification(`技術研發完成：${tech.name}`, 'success');
+      }
+      gameState.researchProgress[techId] = progress;
+    }
+  });
+}
+
+// 在 nextMonth() 裡面呼叫 updateResearchProgress()
+// ...nextMonth() 內部
 
 // Next month progression
 function nextMonth() {
