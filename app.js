@@ -649,7 +649,10 @@ function applyStrategy() {
   gameState.satisfaction = Math.max(0, Math.min(100, Math.round(gameState.satisfaction + satisfactionChange)));
   gameState.safety = Math.max(0, Math.min(100, Math.round(gameState.safety + safetyChange)));
   updateGameDisplay();
+  updateGameDisplay();
   showNotification('營運策略已更新！', 'success');
+  // FIXME: 操作面板自動刷新
+  showAction('strategy');
 }
 
 // Create finance report panel
@@ -730,6 +733,10 @@ function updateResearchProgress() {
 
 // Next month progression
 function nextMonth() {
+   if(gameState.funds <= 0) {
+    showNotification('遊戲結束：資金耗盡！', 'error');
+    // 這裡可以設計跳回主選單或鎖定所有操作
+  }
   // Advance time
   gameState.currentMonth++;
   if(gameState.currentMonth > 12) {
