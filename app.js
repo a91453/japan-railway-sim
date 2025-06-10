@@ -506,7 +506,7 @@ function buildRoute(start, end, cost, time, distance) {
     showNotification('資金不足！', 'error');
     return;
   }
-  gameState.funds -= (gameState.nextBuildDiscount > 0 ? cost * (1 - gameState.nextBuildDiscount) : cost);
+  gameState.funds -= cost; // cost 已經是折扣後價格
   gameState.nextBuildDiscount = 0;
   gameState.totalMileage += distance;
   // Add to connected cities list
@@ -751,6 +751,9 @@ function nextMonth() {
       }
     });
   }
+  // 研發進度每月自動推進
+  updateResearchProgress();
+
   // Monthly updates
   let totalRevenue = 0;
   let totalCost = 0;
@@ -951,11 +954,12 @@ function handleEventOption(option) {
 // Start research on a technology
 function startResearch(techId) {
   const tech = gameState.technologies.find(t => t.id === techId);
-  if(!tech || tech.unlocked || gameState.funds < tech.cost) {
+  if(!tech || tech.unlocked || gameState.funds < tech.cost * (1 - gameState.nextResearchDiscount)) {
     showNotification('無法開始研發', 'error');
     return;
   }
-  gameState.funds -= (gameState.nextResearchDiscount > 0 ? tech.cost * (1 - gameState.nextResearchDiscount) : tech.cost);
+  const actualCost = tech.cost * (1 - gameState.nextResearchDiscount);
+  gameState.funds -= actualCost;
   gameState.nextResearchDiscount = 0;
   gameState.researchProgress[techId] = 0;
   updateGameDisplay();
